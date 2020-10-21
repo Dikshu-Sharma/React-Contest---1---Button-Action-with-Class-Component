@@ -4,30 +4,21 @@ import "../styles/App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-  }
-
-  render() {
-    let x = `Hello, I've learnt to use the full-stack evaluation tool. This makes
-	me so happy`;
-    state = {
-      id: "click",
-      content: ""
+    this.state = { click: false };
+    this.handleclick = () => {
+      this.setState({ click: true });
     };
-
+  }
+  render() {
     return (
       <div id="main">
-        <button
-          id={this.state.id}
-          onClick={() => {
-            this.setState({
-              id: "para"
-            });
-            this.setState({
-              content: x
-            });
-          }}
-        ></button>
-        <div>{this.state.content}</div>
+        <button id="click" onClick={() => this.handleclick()}></button>
+        {this.state.click && (
+          <pre id="para">
+            Hello, I've learnt to use the full-stack evaluation tool. This makes
+            me so happy
+          </pre>
+        )}
       </div>
     );
   }
